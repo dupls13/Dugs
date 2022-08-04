@@ -15,7 +15,7 @@ class Piko:
         """Placeholder Image""" 
         
         # Load image
-        self.pikoload = pygame.image.load('bliz.png')
+        self.pikoload = pygame.image.load('piko.png')
         self.pikotrans = pygame.transform.scale(self.pikoload, (70,70))
         self.pikoimage = self.pikotrans 
         

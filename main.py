@@ -8,6 +8,7 @@ import sys
 from settings import Settings
 from bliz import Bliz
 from piko import Piko
+from dirt import Dirt
 
 
 
@@ -30,6 +31,9 @@ class Digdug:
         
         # Defines player in order to load 
         self.piko = Piko(self)
+        
+        #Define dirt in order to load
+        self.dirt = Dirt(self)
         
     
     def run_game(self):
@@ -101,6 +105,7 @@ class Digdug:
         # Calls Bliz function to draw enemy
         self.bliz.draw()
         self.piko.draw()
+        self.dirt.drawGrid()
         
         pygame.display.flip()
         
