@@ -28,5 +28,5 @@ class Dirt:
         blocksize = 70
         black = (0, 0, 0)
         rect = self.rect 
-        for x in range(self.screen):
-            pygame.draw.rect(self.dirt, self.rect)
+
+    

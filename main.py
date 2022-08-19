@@ -9,7 +9,7 @@ from settings import Settings
 from bliz import Bliz
 from piko import Piko
 from dirt import Dirt
-
+from arrow import Arrow 
 
 
 class Digdug:
@@ -32,9 +32,10 @@ class Digdug:
         # Defines player in order to load 
         self.piko = Piko(self)
         
+        self.arrow = pygame.sprite.Group()
+        
         #Define dirt in order to load
         self.dirt = Dirt(self)
-        
     
     def run_game(self):
         """Start the main loop of the game"""
@@ -43,6 +44,8 @@ class Digdug:
             self.check_events()
             
             self.piko.update()
+            
+            self.arrow.update()
             
             
             self.update_screen()
@@ -79,6 +82,11 @@ class Digdug:
                 if event.key == pygame.K_s:
                     self.piko.move_down = True
                     self.piko.pikoimage = self.piko.pikodown 
+                    
+                if event.key == pygame.K_SPACE:
+                    new_arrow = Arrow(self)
+                    self.arrow.add(new_arrow)
+                    
             
             # Check event for key presses (up):
             elif event.type == pygame.KEYUP:
@@ -93,19 +101,19 @@ class Digdug:
                 if event.key == pygame.K_s:
                     self.piko.move_down = False              
                 
-                
-                
-    
     def update_screen(self):
         """ Update screen with each passthrough """
         
         # Sets screen background color - TD : Change to black 
         self.screen.fill(self.settings.bg_color)
         
+
         # Calls Bliz function to draw enemy
         self.bliz.draw()
         self.piko.draw()
         self.dirt.drawGrid()
+        for Arrow in self.arrow.sprites():
+            Arrow.draw()
         
         pygame.display.flip()
         

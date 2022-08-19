@@ -15,25 +15,24 @@ class Arrow(Sprite):
         self.settings = dd_game.settings 
         
         #Load arrow image ,,, placeholder
-        self.arrowload = pygame.image.laod('bullet.png')
-        self.imagescale = pygame.transform.scale(self.imageload, (20, 20))
+        self.arrowload = pygame.image.load('bullet.png')
+        self.imagescale = pygame.transform.scale(self.arrowload, (20, 20))
         self.rect = self.imagescale.get_rect()
         
         #Set bullet initial location 
-        self.rect.midtop = dd_game.player.rect.midtop
+        self.rect.midtop = dd_game.piko.rect.midtop
         
         # Get rect for arrow 
         self.x = float (self.rect.x)
         self.y = float(self.rect.y)
         
-        self.speed = 15
+        self.speed = 3
         
     def update(self):
-        if """ player facing left: 
-            self.x -= int(self.speed)"""
-        if """ player facing right:
-            self.x += int(self.speed)"""
-        if """ player facing down:
-            self.y -= int(self.speed)"""
-        if """ player facing up:
-            self.y += int(self.speed)"""
+        self.x += int(self.speed)
+        self.rect.x = self.x 
+        """Currently only goes to right, need to go with player direction"""
+    
+    def draw(self):
+        #Draw arrow on screen
+        self.screen.blit(self.imagescale, self.rect)
